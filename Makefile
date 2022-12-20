@@ -4,11 +4,11 @@ all: working issue
 
 working: 	
 	docker build --build-arg K6_IMAGE=loadimpact/k6:0.40.0 -t k6 .
-	docker run -v "$(CURDIR)"/results:/results k6 run test.js -o csv=/results/working.csv
+	docker run -v "$(CURDIR)"/results:/results k6 run test.js -o csv=/results/working.csv --system-tags vu,iter
 
 issue: 	
 	docker build --build-arg K6_IMAGE=loadimpact/k6:0.41.0 -t k6 .
-	docker run -v "$(CURDIR)"/results:/results k6 run test.js -o csv=/results/broken.csv
+	docker run -v "$(CURDIR)"/results:/results k6 run test.js -o csv=/results/broken.csv --system-tags vu,iter
 
 diff-vu:
 	@echo '******************************'
