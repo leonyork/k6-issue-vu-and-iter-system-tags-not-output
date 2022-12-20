@@ -7,7 +7,7 @@ working:
 	docker run -v "$(CURDIR)"/results:/results k6 run test.js -o csv=/results/working.csv
 
 issue: 	
-	docker build --build-arg K6_IMAGE=loadimpact/k6:0.41.0 -t k6 .
+	docker build --build-arg K6_IMAGE=loadimpact/k6:0.42.0 -t k6 .
 	docker run -v "$(CURDIR)"/results:/results k6 run test.js -o csv=/results/broken.csv
 
 diff-vu:
